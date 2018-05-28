@@ -39,6 +39,21 @@ public abstract class MySQLServiceEquipmentCallbackHandler {
     }
 
     /**
+     * auto generated Axis2 call back method for addEquipment method
+     * override this method for handling normal response from addEquipment operation
+     */
+    public void receiveResultaddEquipment(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from addEquipment operation
+     */
+    public void receiveErroraddEquipment(java.lang.Exception e) {
+    }
+
+    /**
      * auto generated Axis2 call back method for getDistribution method
      * override this method for handling normal response from getDistribution operation
      */

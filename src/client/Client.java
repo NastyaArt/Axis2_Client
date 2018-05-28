@@ -23,31 +23,31 @@ public class Client {
         System.out.println("Code: " + returnedCode);
 */
 
-        MySQLServiceEquipmentStub stub = new MySQLServiceEquipmentStub(END_POINT);
-        MySQLServiceEquipmentStub.GetEquipment equipmentOperation = new MySQLServiceEquipmentStub.GetEquipment();
-        MySQLServiceEquipmentStub.GetEquipmentResponse response = stub.getEquipment(equipmentOperation);
-        MySQLServiceEquipmentStub.Equipment[] returnedEquipment = response.get_return();
-        System.out.println("Category: " + returnedEquipment[1].getCategory());
-
-        MySQLServiceEquipmentStub.GetCabinet cabinetOperation = new MySQLServiceEquipmentStub.GetCabinet();
-        MySQLServiceEquipmentStub.GetCabinetResponse response1 = stub.getCabinet(cabinetOperation);
-        MySQLServiceEquipmentStub.Cabinet[] returnedCabinet = response1.get_return();
-        System.out.println("CodeResponsible: " + returnedCabinet[1].getCodeResponsible());
-
-        MySQLServiceEquipmentStub.GetResponsible responsibleOperation = new MySQLServiceEquipmentStub.GetResponsible();
-        MySQLServiceEquipmentStub.GetResponsibleResponse response2 = stub.getResponsible(responsibleOperation);
-        MySQLServiceEquipmentStub.Responsible[] returnedResponsible = response2.get_return();
-        System.out.println("Code: " + returnedResponsible[1].getCode());
-
-        MySQLServiceEquipmentStub.GetDistribution distributionOperation = new MySQLServiceEquipmentStub.GetDistribution();
-        MySQLServiceEquipmentStub.GetDistributionResponse response3 = stub.getDistribution(distributionOperation);
-        MySQLServiceEquipmentStub.Distribution[] returnedDistribution = response3.get_return();
-        System.out.println("Code: " + returnedDistribution[1].getCode());
-
-        MySQLServiceEquipmentStub.GetWriteoff writeoffOperation = new MySQLServiceEquipmentStub.GetWriteoff();
-        MySQLServiceEquipmentStub.GetWriteoffResponse response4 = stub.getWriteoff(writeoffOperation);
-        MySQLServiceEquipmentStub.Writeoff[] returnedWriteoff = response4.get_return();
-        System.out.println("Code: " + returnedWriteoff[1].getCode());
+//        MySQLServiceEquipmentStub stub = new MySQLServiceEquipmentStub(END_POINT);
+//        MySQLServiceEquipmentStub.GetEquipment equipmentOperation = new MySQLServiceEquipmentStub.GetEquipment();
+//        MySQLServiceEquipmentStub.GetEquipmentResponse response = stub.getEquipment(equipmentOperation);
+//        MySQLServiceEquipmentStub.Equipment[] returnedEquipment = response.get_return();
+//        System.out.println("Category: " + returnedEquipment[1].getCategory());
+//
+//        MySQLServiceEquipmentStub.GetCabinet cabinetOperation = new MySQLServiceEquipmentStub.GetCabinet();
+//        MySQLServiceEquipmentStub.GetCabinetResponse response1 = stub.getCabinet(cabinetOperation);
+//        MySQLServiceEquipmentStub.Cabinet[] returnedCabinet = response1.get_return();
+//        System.out.println("CodeResponsible: " + returnedCabinet[1].getCodeResponsible());
+//
+//        MySQLServiceEquipmentStub.GetResponsible responsibleOperation = new MySQLServiceEquipmentStub.GetResponsible();
+//        MySQLServiceEquipmentStub.GetResponsibleResponse response2 = stub.getResponsible(responsibleOperation);
+//        MySQLServiceEquipmentStub.Responsible[] returnedResponsible = response2.get_return();
+//        System.out.println("Code: " + returnedResponsible[1].getCode());
+//
+//        MySQLServiceEquipmentStub.GetDistribution distributionOperation = new MySQLServiceEquipmentStub.GetDistribution();
+//        MySQLServiceEquipmentStub.GetDistributionResponse response3 = stub.getDistribution(distributionOperation);
+//        MySQLServiceEquipmentStub.Distribution[] returnedDistribution = response3.get_return();
+//        System.out.println("Code: " + returnedDistribution[1].getCode());
+//
+//        MySQLServiceEquipmentStub.GetWriteoff writeoffOperation = new MySQLServiceEquipmentStub.GetWriteoff();
+//        MySQLServiceEquipmentStub.GetWriteoffResponse response4 = stub.getWriteoff(writeoffOperation);
+//        MySQLServiceEquipmentStub.Writeoff[] returnedWriteoff = response4.get_return();
+//        System.out.println("Code: " + returnedWriteoff[1].getCode());
 
 
     }
@@ -134,7 +134,13 @@ public class Client {
     public void addEquipment(Equipment eq)
     {
         try{
-//            client.addEquipment(eq);
+            MySQLServiceEquipmentStub.AddEquipment equipmentOperation = new MySQLServiceEquipmentStub.AddEquipment();
+            equipmentOperation.setEquipment(eq);
+
+
+            // send object and receive response
+            MySQLServiceEquipmentStub.AddEquipmentResponse response = stub.addEquipment(equipmentOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }

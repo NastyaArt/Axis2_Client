@@ -100,12 +100,12 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         //creating the operations
         org.apache.axis2.description.AxisOperation __operation;
 
-        _operations = new org.apache.axis2.description.AxisOperation[6];
+        _operations = new org.apache.axis2.description.AxisOperation[7];
 
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://ws.apache.org/axis2", "getDistribution"));
+                "http://ws.apache.org/axis2", "addEquipment"));
         _service.addOperation(__operation);
 
         _operations[0] = __operation;
@@ -113,7 +113,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://ws.apache.org/axis2", "getCabinet"));
+                "http://ws.apache.org/axis2", "getDistribution"));
         _service.addOperation(__operation);
 
         _operations[1] = __operation;
@@ -121,7 +121,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://ws.apache.org/axis2", "getResponsible"));
+                "http://ws.apache.org/axis2", "getCabinet"));
         _service.addOperation(__operation);
 
         _operations[2] = __operation;
@@ -129,7 +129,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://ws.apache.org/axis2", "getMySpechialCode"));
+                "http://ws.apache.org/axis2", "getResponsible"));
         _service.addOperation(__operation);
 
         _operations[3] = __operation;
@@ -137,7 +137,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://ws.apache.org/axis2", "getWriteoff"));
+                "http://ws.apache.org/axis2", "getMySpechialCode"));
         _service.addOperation(__operation);
 
         _operations[4] = __operation;
@@ -145,10 +145,18 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
         __operation.setName(new javax.xml.namespace.QName(
-                "http://ws.apache.org/axis2", "getEquipment"));
+                "http://ws.apache.org/axis2", "getWriteoff"));
         _service.addOperation(__operation);
 
         _operations[5] = __operation;
+
+        __operation = new org.apache.axis2.description.OutInAxisOperation();
+
+        __operation.setName(new javax.xml.namespace.QName(
+                "http://ws.apache.org/axis2", "getEquipment"));
+        _service.addOperation(__operation);
+
+        _operations[6] = __operation;
     }
 
     //populates the faults
@@ -158,16 +166,274 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
     /**
      * Auto generated method signature
      *
-     * @see org.apache.ws.axis2.MySQLServiceEquipment#getDistribution
-     * @param getDistribution0
+     * @see org.apache.ws.axis2.MySQLServiceEquipment#addEquipment
+     * @param addEquipment0
      */
-    public org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistributionResponse getDistribution(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistribution getDistribution0)
+    public org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse addEquipment(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment addEquipment0)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
         try {
             org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
+            _operationClient.getOptions().setAction("urn:addEquipment");
+            _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+            addPropertyToOperationClient(_operationClient,
+                org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
+                "&");
+
+            // create SOAP envelope with that payload
+            org.apache.axiom.soap.SOAPEnvelope env = null;
+
+            env = toEnvelope(getFactory(_operationClient.getOptions()
+                                                        .getSoapVersionURI()),
+                    addEquipment0,
+                    optimizeContent(
+                        new javax.xml.namespace.QName(
+                            "http://ws.apache.org/axis2", "addEquipment")),
+                    new javax.xml.namespace.QName(
+                        "http://ws.apache.org/axis2", "addEquipment"));
+
+            //adding SOAP soap_headers
+            _serviceClient.addHeadersToEnvelope(env);
+            // set the message context with that soap envelope
+            _messageContext.setEnvelope(env);
+
+            // add the message contxt to the operation client
+            _operationClient.addMessageContext(_messageContext);
+
+            //execute the operation client
+            _operationClient.execute(true);
+
+            org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient.getMessageContext(org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
+            org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
+
+            java.lang.Object object = fromOM(_returnEnv.getBody()
+                                                       .getFirstElement(),
+                    org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse.class);
+
+            return (org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse) object;
+        } catch (org.apache.axis2.AxisFault f) {
+            org.apache.axiom.om.OMElement faultElt = f.getDetail();
+
+            if (faultElt != null) {
+                if (faultExceptionNameMap.containsKey(
+                            new org.apache.axis2.client.FaultMapKey(
+                                faultElt.getQName(), "addEquipment"))) {
+                    //make the fault by reflection
+                    try {
+                        java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
+                                    faultElt.getQName(), "addEquipment"));
+                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
+                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+
+                        //message class
+                        java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
+                                    faultElt.getQName(), "addEquipment"));
+                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+                        java.lang.Object messageObject = fromOM(faultElt,
+                                messageClass);
+                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+                                new java.lang.Class[] { messageClass });
+                        m.invoke(ex, new java.lang.Object[] { messageObject });
+
+                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
+                    } catch (java.lang.ClassCastException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.ClassNotFoundException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.NoSuchMethodException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.reflect.InvocationTargetException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.IllegalAccessException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.InstantiationException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }
+                } else {
+                    throw f;
+                }
+            } else {
+                throw f;
+            }
+        } finally {
+            if (_messageContext.getTransportOut() != null) {
+                _messageContext.getTransportOut().getSender()
+                               .cleanup(_messageContext);
+            }
+        }
+    }
+
+    /**
+     * Auto generated method signature for Asynchronous Invocations
+     *
+     * @see org.apache.ws.axis2.MySQLServiceEquipment#startaddEquipment
+     * @param addEquipment0
+     */
+    public void startaddEquipment(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment addEquipment0,
+        final org.apache.ws.axis2.MySQLServiceEquipmentCallbackHandler callback)
+        throws java.rmi.RemoteException {
+        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
+        _operationClient.getOptions().setAction("urn:addEquipment");
+        _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+        addPropertyToOperationClient(_operationClient,
+            org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
+            "&");
+
+        // create SOAP envelope with that payload
+        org.apache.axiom.soap.SOAPEnvelope env = null;
+        final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
+
+        //Style is Doc.
+        env = toEnvelope(getFactory(_operationClient.getOptions()
+                                                    .getSoapVersionURI()),
+                addEquipment0,
+                optimizeContent(
+                    new javax.xml.namespace.QName(
+                        "http://ws.apache.org/axis2", "addEquipment")),
+                new javax.xml.namespace.QName("http://ws.apache.org/axis2",
+                    "addEquipment"));
+
+        // adding SOAP soap_headers
+        _serviceClient.addHeadersToEnvelope(env);
+        // create message context with that soap envelope
+        _messageContext.setEnvelope(env);
+
+        // add the message context to the operation client
+        _operationClient.addMessageContext(_messageContext);
+
+        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
+                public void onMessage(
+                    org.apache.axis2.context.MessageContext resultContext) {
+                    try {
+                        org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
+
+                        java.lang.Object object = fromOM(resultEnv.getBody()
+                                                                  .getFirstElement(),
+                                org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse.class);
+                        callback.receiveResultaddEquipment((org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse) object);
+                    } catch (org.apache.axis2.AxisFault e) {
+                        callback.receiveErroraddEquipment(e);
+                    }
+                }
+
+                public void onError(java.lang.Exception error) {
+                    if (error instanceof org.apache.axis2.AxisFault) {
+                        org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
+                        org.apache.axiom.om.OMElement faultElt = f.getDetail();
+
+                        if (faultElt != null) {
+                            if (faultExceptionNameMap.containsKey(
+                                        new org.apache.axis2.client.FaultMapKey(
+                                            faultElt.getQName(), "addEquipment"))) {
+                                //make the fault by reflection
+                                try {
+                                    java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
+                                                faultElt.getQName(),
+                                                "addEquipment"));
+                                    java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+                                    java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
+                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+
+                                    //message class
+                                    java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
+                                                faultElt.getQName(),
+                                                "addEquipment"));
+                                    java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+                                    java.lang.Object messageObject = fromOM(faultElt,
+                                            messageClass);
+                                    java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+                                            new java.lang.Class[] { messageClass });
+                                    m.invoke(ex,
+                                        new java.lang.Object[] { messageObject });
+
+                                    callback.receiveErroraddEquipment(new java.rmi.RemoteException(
+                                            ex.getMessage(), ex));
+                                } catch (java.lang.ClassCastException e) {
+                                    // we cannot intantiate the class - throw the original Axis fault
+                                    callback.receiveErroraddEquipment(f);
+                                } catch (java.lang.ClassNotFoundException e) {
+                                    // we cannot intantiate the class - throw the original Axis fault
+                                    callback.receiveErroraddEquipment(f);
+                                } catch (java.lang.NoSuchMethodException e) {
+                                    // we cannot intantiate the class - throw the original Axis fault
+                                    callback.receiveErroraddEquipment(f);
+                                } catch (java.lang.reflect.InvocationTargetException e) {
+                                    // we cannot intantiate the class - throw the original Axis fault
+                                    callback.receiveErroraddEquipment(f);
+                                } catch (java.lang.IllegalAccessException e) {
+                                    // we cannot intantiate the class - throw the original Axis fault
+                                    callback.receiveErroraddEquipment(f);
+                                } catch (java.lang.InstantiationException e) {
+                                    // we cannot intantiate the class - throw the original Axis fault
+                                    callback.receiveErroraddEquipment(f);
+                                } catch (org.apache.axis2.AxisFault e) {
+                                    // we cannot intantiate the class - throw the original Axis fault
+                                    callback.receiveErroraddEquipment(f);
+                                }
+                            } else {
+                                callback.receiveErroraddEquipment(f);
+                            }
+                        } else {
+                            callback.receiveErroraddEquipment(f);
+                        }
+                    } else {
+                        callback.receiveErroraddEquipment(error);
+                    }
+                }
+
+                public void onFault(
+                    org.apache.axis2.context.MessageContext faultContext) {
+                    org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
+                    onError(fault);
+                }
+
+                public void onComplete() {
+                    try {
+                        _messageContext.getTransportOut().getSender()
+                                       .cleanup(_messageContext);
+                    } catch (org.apache.axis2.AxisFault axisFault) {
+                        callback.receiveErroraddEquipment(axisFault);
+                    }
+                }
+            });
+
+        org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
+
+        if ((_operations[0].getMessageReceiver() == null) &&
+                _operationClient.getOptions().isUseSeparateListener()) {
+            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
+            _operations[0].setMessageReceiver(_callbackReceiver);
+        }
+
+        //execute the operation client
+        _operationClient.execute(false);
+    }
+
+    /**
+     * Auto generated method signature
+     *
+     * @see org.apache.ws.axis2.MySQLServiceEquipment#getDistribution
+     * @param getDistribution2
+     */
+    public org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistributionResponse getDistribution(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistribution getDistribution2)
+        throws java.rmi.RemoteException {
+        org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
+
+        try {
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
             _operationClient.getOptions().setAction("urn:getDistribution");
             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -180,7 +446,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getDistribution0,
+                    getDistribution2,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://ws.apache.org/axis2", "getDistribution")),
@@ -269,13 +535,13 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature for Asynchronous Invocations
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#startgetDistribution
-     * @param getDistribution0
+     * @param getDistribution2
      */
     public void startgetDistribution(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistribution getDistribution0,
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistribution getDistribution2,
         final org.apache.ws.axis2.MySQLServiceEquipmentCallbackHandler callback)
         throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
+        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
         _operationClient.getOptions().setAction("urn:getDistribution");
         _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -290,7 +556,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         //Style is Doc.
         env = toEnvelope(getFactory(_operationClient.getOptions()
                                                     .getSoapVersionURI()),
-                getDistribution0,
+                getDistribution2,
                 optimizeContent(
                     new javax.xml.namespace.QName(
                         "http://ws.apache.org/axis2", "getDistribution")),
@@ -404,10 +670,10 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
         org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
 
-        if ((_operations[0].getMessageReceiver() == null) &&
+        if ((_operations[1].getMessageReceiver() == null) &&
                 _operationClient.getOptions().isUseSeparateListener()) {
             _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[0].setMessageReceiver(_callbackReceiver);
+            _operations[1].setMessageReceiver(_callbackReceiver);
         }
 
         //execute the operation client
@@ -418,15 +684,15 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#getCabinet
-     * @param getCabinet2
+     * @param getCabinet4
      */
     public org.apache.ws.axis2.MySQLServiceEquipmentStub.GetCabinetResponse getCabinet(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetCabinet getCabinet2)
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetCabinet getCabinet4)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
         try {
-            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[2].getName());
             _operationClient.getOptions().setAction("urn:getCabinet");
             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -439,7 +705,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getCabinet2,
+                    getCabinet4,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://ws.apache.org/axis2", "getCabinet")),
@@ -528,13 +794,13 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature for Asynchronous Invocations
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#startgetCabinet
-     * @param getCabinet2
+     * @param getCabinet4
      */
     public void startgetCabinet(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetCabinet getCabinet2,
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetCabinet getCabinet4,
         final org.apache.ws.axis2.MySQLServiceEquipmentCallbackHandler callback)
         throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
+        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[2].getName());
         _operationClient.getOptions().setAction("urn:getCabinet");
         _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -549,7 +815,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         //Style is Doc.
         env = toEnvelope(getFactory(_operationClient.getOptions()
                                                     .getSoapVersionURI()),
-                getCabinet2,
+                getCabinet4,
                 optimizeContent(
                     new javax.xml.namespace.QName(
                         "http://ws.apache.org/axis2", "getCabinet")),
@@ -662,10 +928,10 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
         org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
 
-        if ((_operations[1].getMessageReceiver() == null) &&
+        if ((_operations[2].getMessageReceiver() == null) &&
                 _operationClient.getOptions().isUseSeparateListener()) {
             _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[1].setMessageReceiver(_callbackReceiver);
+            _operations[2].setMessageReceiver(_callbackReceiver);
         }
 
         //execute the operation client
@@ -676,15 +942,15 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#getResponsible
-     * @param getResponsible4
+     * @param getResponsible6
      */
     public org.apache.ws.axis2.MySQLServiceEquipmentStub.GetResponsibleResponse getResponsible(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetResponsible getResponsible4)
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetResponsible getResponsible6)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
         try {
-            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[2].getName());
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
             _operationClient.getOptions().setAction("urn:getResponsible");
             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -697,7 +963,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getResponsible4,
+                    getResponsible6,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://ws.apache.org/axis2", "getResponsible")),
@@ -786,13 +1052,13 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature for Asynchronous Invocations
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#startgetResponsible
-     * @param getResponsible4
+     * @param getResponsible6
      */
     public void startgetResponsible(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetResponsible getResponsible4,
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetResponsible getResponsible6,
         final org.apache.ws.axis2.MySQLServiceEquipmentCallbackHandler callback)
         throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[2].getName());
+        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
         _operationClient.getOptions().setAction("urn:getResponsible");
         _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -807,7 +1073,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         //Style is Doc.
         env = toEnvelope(getFactory(_operationClient.getOptions()
                                                     .getSoapVersionURI()),
-                getResponsible4,
+                getResponsible6,
                 optimizeContent(
                     new javax.xml.namespace.QName(
                         "http://ws.apache.org/axis2", "getResponsible")),
@@ -921,10 +1187,10 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
         org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
 
-        if ((_operations[2].getMessageReceiver() == null) &&
+        if ((_operations[3].getMessageReceiver() == null) &&
                 _operationClient.getOptions().isUseSeparateListener()) {
             _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[2].setMessageReceiver(_callbackReceiver);
+            _operations[3].setMessageReceiver(_callbackReceiver);
         }
 
         //execute the operation client
@@ -935,15 +1201,15 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#getMySpechialCode
-     * @param getMySpechialCode6
+     * @param getMySpechialCode8
      */
     public org.apache.ws.axis2.MySQLServiceEquipmentStub.GetMySpechialCodeResponse getMySpechialCode(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetMySpechialCode getMySpechialCode6)
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetMySpechialCode getMySpechialCode8)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
         try {
-            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
             _operationClient.getOptions().setAction("urn:getMySpechialCode");
             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -956,7 +1222,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getMySpechialCode6,
+                    getMySpechialCode8,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://ws.apache.org/axis2", "getMySpechialCode")),
@@ -1045,13 +1311,13 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature for Asynchronous Invocations
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#startgetMySpechialCode
-     * @param getMySpechialCode6
+     * @param getMySpechialCode8
      */
     public void startgetMySpechialCode(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetMySpechialCode getMySpechialCode6,
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetMySpechialCode getMySpechialCode8,
         final org.apache.ws.axis2.MySQLServiceEquipmentCallbackHandler callback)
         throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
+        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
         _operationClient.getOptions().setAction("urn:getMySpechialCode");
         _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1066,7 +1332,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         //Style is Doc.
         env = toEnvelope(getFactory(_operationClient.getOptions()
                                                     .getSoapVersionURI()),
-                getMySpechialCode6,
+                getMySpechialCode8,
                 optimizeContent(
                     new javax.xml.namespace.QName(
                         "http://ws.apache.org/axis2", "getMySpechialCode")),
@@ -1180,10 +1446,10 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
         org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
 
-        if ((_operations[3].getMessageReceiver() == null) &&
+        if ((_operations[4].getMessageReceiver() == null) &&
                 _operationClient.getOptions().isUseSeparateListener()) {
             _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[3].setMessageReceiver(_callbackReceiver);
+            _operations[4].setMessageReceiver(_callbackReceiver);
         }
 
         //execute the operation client
@@ -1194,15 +1460,15 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#getWriteoff
-     * @param getWriteoff8
+     * @param getWriteoff10
      */
     public org.apache.ws.axis2.MySQLServiceEquipmentStub.GetWriteoffResponse getWriteoff(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetWriteoff getWriteoff8)
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetWriteoff getWriteoff10)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
         try {
-            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
             _operationClient.getOptions().setAction("urn:getWriteoff");
             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1215,7 +1481,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getWriteoff8,
+                    getWriteoff10,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://ws.apache.org/axis2", "getWriteoff")),
@@ -1304,13 +1570,13 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature for Asynchronous Invocations
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#startgetWriteoff
-     * @param getWriteoff8
+     * @param getWriteoff10
      */
     public void startgetWriteoff(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetWriteoff getWriteoff8,
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetWriteoff getWriteoff10,
         final org.apache.ws.axis2.MySQLServiceEquipmentCallbackHandler callback)
         throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
+        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
         _operationClient.getOptions().setAction("urn:getWriteoff");
         _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1325,7 +1591,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         //Style is Doc.
         env = toEnvelope(getFactory(_operationClient.getOptions()
                                                     .getSoapVersionURI()),
-                getWriteoff8,
+                getWriteoff10,
                 optimizeContent(
                     new javax.xml.namespace.QName(
                         "http://ws.apache.org/axis2", "getWriteoff")),
@@ -1438,10 +1704,10 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
         org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
 
-        if ((_operations[4].getMessageReceiver() == null) &&
+        if ((_operations[5].getMessageReceiver() == null) &&
                 _operationClient.getOptions().isUseSeparateListener()) {
             _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[4].setMessageReceiver(_callbackReceiver);
+            _operations[5].setMessageReceiver(_callbackReceiver);
         }
 
         //execute the operation client
@@ -1452,15 +1718,15 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#getEquipment
-     * @param getEquipment10
+     * @param getEquipment12
      */
     public org.apache.ws.axis2.MySQLServiceEquipmentStub.GetEquipmentResponse getEquipment(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetEquipment getEquipment10)
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetEquipment getEquipment12)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
         try {
-            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[6].getName());
             _operationClient.getOptions().setAction("urn:getEquipment");
             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1473,7 +1739,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getEquipment10,
+                    getEquipment12,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://ws.apache.org/axis2", "getEquipment")),
@@ -1562,13 +1828,13 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
      * Auto generated method signature for Asynchronous Invocations
      *
      * @see org.apache.ws.axis2.MySQLServiceEquipment#startgetEquipment
-     * @param getEquipment10
+     * @param getEquipment12
      */
     public void startgetEquipment(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetEquipment getEquipment10,
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetEquipment getEquipment12,
         final org.apache.ws.axis2.MySQLServiceEquipmentCallbackHandler callback)
         throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
+        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[6].getName());
         _operationClient.getOptions().setAction("urn:getEquipment");
         _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -1583,7 +1849,7 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         //Style is Doc.
         env = toEnvelope(getFactory(_operationClient.getOptions()
                                                     .getSoapVersionURI()),
-                getEquipment10,
+                getEquipment12,
                 optimizeContent(
                     new javax.xml.namespace.QName(
                         "http://ws.apache.org/axis2", "getEquipment")),
@@ -1696,10 +1962,10 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
         org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
 
-        if ((_operations[5].getMessageReceiver() == null) &&
+        if ((_operations[6].getMessageReceiver() == null) &&
                 _operationClient.getOptions().isUseSeparateListener()) {
             _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[5].setMessageReceiver(_callbackReceiver);
+            _operations[6].setMessageReceiver(_callbackReceiver);
         }
 
         //execute the operation client
@@ -1718,6 +1984,28 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
         }
 
         return false;
+    }
+
+    private org.apache.axiom.om.OMElement toOM(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment param,
+        boolean optimizeContent) throws org.apache.axis2.AxisFault {
+        try {
+            return param.getOMElement(org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment.MY_QNAME,
+                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
+    }
+
+    private org.apache.axiom.om.OMElement toOM(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse param,
+        boolean optimizeContent) throws org.apache.axis2.AxisFault {
+        try {
+            return param.getOMElement(org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse.MY_QNAME,
+                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
     }
 
     private org.apache.axiom.om.OMElement toOM(
@@ -1854,6 +2142,25 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
 
     private org.apache.axiom.soap.SOAPEnvelope toEnvelope(
         org.apache.axiom.soap.SOAPFactory factory,
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment param,
+        boolean optimizeContent, javax.xml.namespace.QName elementQName)
+        throws org.apache.axis2.AxisFault {
+        try {
+            org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+            emptyEnvelope.getBody()
+                         .addChild(param.getOMElement(
+                    org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment.MY_QNAME,
+                    factory));
+
+            return emptyEnvelope;
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
+    }
+
+    /* methods to provide back word compatibility */
+    private org.apache.axiom.soap.SOAPEnvelope toEnvelope(
+        org.apache.axiom.soap.SOAPFactory factory,
         org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistribution param,
         boolean optimizeContent, javax.xml.namespace.QName elementQName)
         throws org.apache.axis2.AxisFault {
@@ -1978,6 +2285,16 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
     private java.lang.Object fromOM(org.apache.axiom.om.OMElement param,
         java.lang.Class type) throws org.apache.axis2.AxisFault {
         try {
+            if (org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment.class.equals(
+                        type)) {
+                return org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipment.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+            }
+
+            if (org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse.class.equals(
+                        type)) {
+                return org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+            }
+
             if (org.apache.ws.axis2.MySQLServiceEquipmentStub.GetCabinet.class.equals(
                         type)) {
                 return org.apache.ws.axis2.MySQLServiceEquipmentStub.GetCabinet.Factory.parse(param.getXMLStreamReaderWithoutCaching());
@@ -4054,6 +4371,427 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
                         // call the converter utility  to convert and set the array
                         object.set_return((Distribution[]) org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
                                 Distribution.class, list1));
+                    } // End of if for expected property start element
+
+                    else {
+                    }
+
+                    while (!reader.isStartElement() && !reader.isEndElement())
+                        reader.next();
+
+                    if (reader.isStartElement()) {
+                        // 2 - A start element we are not expecting indicates a trailing invalid property
+                        throw new org.apache.axis2.databinding.ADBException(
+                            "Unexpected subelement " + reader.getName());
+                    }
+                } catch (javax.xml.stream.XMLStreamException e) {
+                    throw new java.lang.Exception(e);
+                }
+
+                return object;
+            }
+        } //end of factory class
+    }
+
+    public static class AddEquipment implements org.apache.axis2.databinding.ADBBean {
+        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://ws.apache.org/axis2",
+                "addEquipment", "ns2");
+
+        /**
+         * field for Equipment
+         */
+        protected Equipment localEquipment;
+
+        /*  This tracker boolean wil be used to detect whether the user called the set method
+         *   for this attribute. It will be used to determine whether to include this field
+         *   in the serialized XML
+         */
+        protected boolean localEquipmentTracker = false;
+
+        public boolean isEquipmentSpecified() {
+            return localEquipmentTracker;
+        }
+
+        /**
+         * Auto generated getter method
+         * @return Equipment
+         */
+        public Equipment getEquipment() {
+            return localEquipment;
+        }
+
+        /**
+         * Auto generated setter method
+         * @param param Equipment
+         */
+        public void setEquipment(Equipment param) {
+            localEquipmentTracker = true;
+
+            this.localEquipment = param;
+        }
+
+        /**
+         *
+         * @param parentQName
+         * @param factory
+         * @return org.apache.axiom.om.OMElement
+         */
+        public org.apache.axiom.om.OMElement getOMElement(
+            final javax.xml.namespace.QName parentQName,
+            final org.apache.axiom.om.OMFactory factory)
+            throws org.apache.axis2.databinding.ADBException {
+            return factory.createOMElement(new org.apache.axis2.databinding.ADBDataSource(
+                    this, MY_QNAME));
+        }
+
+        public void serialize(final javax.xml.namespace.QName parentQName,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException,
+                org.apache.axis2.databinding.ADBException {
+            serialize(parentQName, xmlWriter, false);
+        }
+
+        public void serialize(final javax.xml.namespace.QName parentQName,
+            javax.xml.stream.XMLStreamWriter xmlWriter, boolean serializeType)
+            throws javax.xml.stream.XMLStreamException,
+                org.apache.axis2.databinding.ADBException {
+            java.lang.String prefix = null;
+            java.lang.String namespace = null;
+
+            prefix = parentQName.getPrefix();
+            namespace = parentQName.getNamespaceURI();
+            writeStartElement(prefix, namespace, parentQName.getLocalPart(),
+                xmlWriter);
+
+            if (serializeType) {
+                java.lang.String namespacePrefix = registerPrefix(xmlWriter,
+                        "http://ws.apache.org/axis2");
+
+                if ((namespacePrefix != null) &&
+                        (namespacePrefix.trim().length() > 0)) {
+                    writeAttribute("xsi",
+                        "http://www.w3.org/2001/XMLSchema-instance", "type",
+                        namespacePrefix + ":addEquipment", xmlWriter);
+                } else {
+                    writeAttribute("xsi",
+                        "http://www.w3.org/2001/XMLSchema-instance", "type",
+                        "addEquipment", xmlWriter);
+                }
+            }
+
+            if (localEquipmentTracker) {
+                if (localEquipment == null) {
+                    writeStartElement(null, "http://ws.apache.org/axis2",
+                        "equipment", xmlWriter);
+
+                    // write the nil attribute
+                    writeAttribute("xsi",
+                        "http://www.w3.org/2001/XMLSchema-instance", "nil",
+                        "1", xmlWriter);
+                    xmlWriter.writeEndElement();
+                } else {
+                    localEquipment.serialize(new javax.xml.namespace.QName(
+                            "http://ws.apache.org/axis2", "equipment"),
+                        xmlWriter);
+                }
+            }
+
+            xmlWriter.writeEndElement();
+        }
+
+        private static java.lang.String generatePrefix(
+            java.lang.String namespace) {
+            if (namespace.equals("http://ws.apache.org/axis2")) {
+                return "ns2";
+            }
+
+            return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+        }
+
+        /**
+         * Utility method to write an element start tag.
+         */
+        private void writeStartElement(java.lang.String prefix,
+            java.lang.String namespace, java.lang.String localPart,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String writerPrefix = xmlWriter.getPrefix(namespace);
+
+            if (writerPrefix != null) {
+                xmlWriter.writeStartElement(writerPrefix, localPart, namespace);
+            } else {
+                if (namespace.length() == 0) {
+                    prefix = "";
+                } else if (prefix == null) {
+                    prefix = generatePrefix(namespace);
+                }
+
+                xmlWriter.writeStartElement(prefix, localPart, namespace);
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+        }
+
+        /**
+         * Util method to write an attribute with the ns prefix
+         */
+        private void writeAttribute(java.lang.String prefix,
+            java.lang.String namespace, java.lang.String attName,
+            java.lang.String attValue,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String writerPrefix = xmlWriter.getPrefix(namespace);
+
+            if (writerPrefix != null) {
+                xmlWriter.writeAttribute(writerPrefix, namespace, attName,
+                    attValue);
+            } else {
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+                xmlWriter.writeAttribute(prefix, namespace, attName, attValue);
+            }
+        }
+
+        /**
+         * Util method to write an attribute without the ns prefix
+         */
+        private void writeAttribute(java.lang.String namespace,
+            java.lang.String attName, java.lang.String attValue,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            if (namespace.equals("")) {
+                xmlWriter.writeAttribute(attName, attValue);
+            } else {
+                xmlWriter.writeAttribute(registerPrefix(xmlWriter, namespace),
+                    namespace, attName, attValue);
+            }
+        }
+
+        /**
+         * Util method to write an attribute without the ns prefix
+         */
+        private void writeQNameAttribute(java.lang.String namespace,
+            java.lang.String attName, javax.xml.namespace.QName qname,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String attributeNamespace = qname.getNamespaceURI();
+            java.lang.String attributePrefix = xmlWriter.getPrefix(attributeNamespace);
+
+            if (attributePrefix == null) {
+                attributePrefix = registerPrefix(xmlWriter, attributeNamespace);
+            }
+
+            java.lang.String attributeValue;
+
+            if (attributePrefix.trim().length() > 0) {
+                attributeValue = attributePrefix + ":" + qname.getLocalPart();
+            } else {
+                attributeValue = qname.getLocalPart();
+            }
+
+            if (namespace.equals("")) {
+                xmlWriter.writeAttribute(attName, attributeValue);
+            } else {
+                registerPrefix(xmlWriter, namespace);
+                xmlWriter.writeAttribute(attributePrefix, namespace, attName,
+                    attributeValue);
+            }
+        }
+
+        /**
+         *  method to handle Qnames
+         */
+        private void writeQName(javax.xml.namespace.QName qname,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String namespaceURI = qname.getNamespaceURI();
+
+            if (namespaceURI != null) {
+                java.lang.String prefix = xmlWriter.getPrefix(namespaceURI);
+
+                if (prefix == null) {
+                    prefix = generatePrefix(namespaceURI);
+                    xmlWriter.writeNamespace(prefix, namespaceURI);
+                    xmlWriter.setPrefix(prefix, namespaceURI);
+                }
+
+                if (prefix.trim().length() > 0) {
+                    xmlWriter.writeCharacters(prefix + ":" +
+                        org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                            qname));
+                } else {
+                    // i.e this is the default namespace
+                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                            qname));
+                }
+            } else {
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                        qname));
+            }
+        }
+
+        private void writeQNames(javax.xml.namespace.QName[] qnames,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            if (qnames != null) {
+                // we have to store this data until last moment since it is not possible to write any
+                // namespace data after writing the charactor data
+                java.lang.StringBuffer stringToWrite = new java.lang.StringBuffer();
+                java.lang.String namespaceURI = null;
+                java.lang.String prefix = null;
+
+                for (int i = 0; i < qnames.length; i++) {
+                    if (i > 0) {
+                        stringToWrite.append(" ");
+                    }
+
+                    namespaceURI = qnames[i].getNamespaceURI();
+
+                    if (namespaceURI != null) {
+                        prefix = xmlWriter.getPrefix(namespaceURI);
+
+                        if ((prefix == null) || (prefix.length() == 0)) {
+                            prefix = generatePrefix(namespaceURI);
+                            xmlWriter.writeNamespace(prefix, namespaceURI);
+                            xmlWriter.setPrefix(prefix, namespaceURI);
+                        }
+
+                        if (prefix.trim().length() > 0) {
+                            stringToWrite.append(prefix).append(":")
+                                         .append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                    qnames[i]));
+                        } else {
+                            stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                    qnames[i]));
+                        }
+                    } else {
+                        stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                qnames[i]));
+                    }
+                }
+
+                xmlWriter.writeCharacters(stringToWrite.toString());
+            }
+        }
+
+        /**
+         * Register a namespace prefix
+         */
+        private java.lang.String registerPrefix(
+            javax.xml.stream.XMLStreamWriter xmlWriter,
+            java.lang.String namespace)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String prefix = xmlWriter.getPrefix(namespace);
+
+            if (prefix == null) {
+                prefix = generatePrefix(namespace);
+
+                javax.xml.namespace.NamespaceContext nsContext = xmlWriter.getNamespaceContext();
+
+                while (true) {
+                    java.lang.String uri = nsContext.getNamespaceURI(prefix);
+
+                    if ((uri == null) || (uri.length() == 0)) {
+                        break;
+                    }
+
+                    prefix = org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+                }
+
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+
+            return prefix;
+        }
+
+        /**
+         *  Factory class that keeps the parse method
+         */
+        public static class Factory {
+            private static org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(Factory.class);
+
+            /**
+             * static method to create the object
+             * Precondition:  If this object is an element, the current or next start element starts this object and any intervening reader events are ignorable
+             *                If this object is not an element, it is a complex type and the reader is at the event just after the outer start element
+             * Postcondition: If this object is an element, the reader is positioned at its end element
+             *                If this object is a complex type, the reader is positioned at the end element of its outer element
+             */
+            public static AddEquipment parse(
+                javax.xml.stream.XMLStreamReader reader)
+                throws java.lang.Exception {
+                AddEquipment object = new AddEquipment();
+
+                int event;
+                javax.xml.namespace.QName currentQName = null;
+                java.lang.String nillableValue = null;
+                java.lang.String prefix = "";
+                java.lang.String namespaceuri = "";
+
+                try {
+                    while (!reader.isStartElement() && !reader.isEndElement())
+                        reader.next();
+
+                    currentQName = reader.getName();
+
+                    if (reader.getAttributeValue(
+                                "http://www.w3.org/2001/XMLSchema-instance",
+                                "type") != null) {
+                        java.lang.String fullTypeName = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                                "type");
+
+                        if (fullTypeName != null) {
+                            java.lang.String nsPrefix = null;
+
+                            if (fullTypeName.indexOf(":") > -1) {
+                                nsPrefix = fullTypeName.substring(0,
+                                        fullTypeName.indexOf(":"));
+                            }
+
+                            nsPrefix = (nsPrefix == null) ? "" : nsPrefix;
+
+                            java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(
+                                        ":") + 1);
+
+                            if (!"addEquipment".equals(type)) {
+                                //find namespace for the prefix
+                                java.lang.String nsUri = reader.getNamespaceContext()
+                                                               .getNamespaceURI(nsPrefix);
+
+                                return (AddEquipment) ExtensionMapper.getTypeObject(nsUri,
+                                    type, reader);
+                            }
+                        }
+                    }
+
+                    // Note all attributes that were handled. Used to differ normal attributes
+                    // from anyAttributes.
+                    java.util.Vector handledAttributes = new java.util.Vector();
+
+                    reader.next();
+
+                    while (!reader.isStartElement() && !reader.isEndElement())
+                        reader.next();
+
+                    if (reader.isStartElement() &&
+                            new javax.xml.namespace.QName(
+                                "http://ws.apache.org/axis2", "equipment").equals(
+                                reader.getName())) {
+                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                                "nil");
+
+                        if ("true".equals(nillableValue) ||
+                                "1".equals(nillableValue)) {
+                            object.setEquipment(null);
+                            reader.next();
+
+                            reader.next();
+                        } else {
+                            object.setEquipment(Equipment.Factory.parse(reader));
+
+                            reader.next();
+                        }
                     } // End of if for expected property start element
 
                     else {
@@ -7874,6 +8612,27 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
                 "getMySpechialCode", "ns2");
 
         /**
+         * field for B
+         */
+        protected int localB;
+
+        /**
+         * Auto generated getter method
+         * @return int
+         */
+        public int getB() {
+            return localB;
+        }
+
+        /**
+         * Auto generated setter method
+         * @param param B
+         */
+        public void setB(int param) {
+            this.localB = param;
+        }
+
+        /**
          *
          * @param parentQName
          * @param factory
@@ -7921,6 +8680,19 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
                         "getMySpechialCode", xmlWriter);
                 }
             }
+
+            namespace = "http://ws.apache.org/axis2";
+            writeStartElement(null, namespace, "b", xmlWriter);
+
+            if (localB == java.lang.Integer.MIN_VALUE) {
+                throw new org.apache.axis2.databinding.ADBException(
+                    "b cannot be null!!");
+            } else {
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                        localB));
+            }
+
+            xmlWriter.writeEndElement();
 
             xmlWriter.writeEndElement();
         }
@@ -8196,6 +8968,36 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
                     java.util.Vector handledAttributes = new java.util.Vector();
 
                     reader.next();
+
+                    while (!reader.isStartElement() && !reader.isEndElement())
+                        reader.next();
+
+                    if (reader.isStartElement() &&
+                            new javax.xml.namespace.QName(
+                                "http://ws.apache.org/axis2", "b").equals(
+                                reader.getName())) {
+                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                                "nil");
+
+                        if ("true".equals(nillableValue) ||
+                                "1".equals(nillableValue)) {
+                            throw new org.apache.axis2.databinding.ADBException(
+                                "The element: " + "b" + "  cannot be null");
+                        }
+
+                        java.lang.String content = reader.getElementText();
+
+                        object.setB(org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(
+                                content));
+
+                        reader.next();
+                    } // End of if for expected property start element
+
+                    else {
+                        // 1 - A start element we are not expecting indicates an invalid parameter was passed
+                        throw new org.apache.axis2.databinding.ADBException(
+                            "Unexpected subelement " + reader.getName());
+                    }
 
                     while (!reader.isStartElement() && !reader.isEndElement())
                         reader.next();
@@ -9956,6 +10758,426 @@ public class MySQLServiceEquipmentStub extends org.apache.axis2.client.Stub {
                         // call the converter utility  to convert and set the array
                         object.set_return((Equipment[]) org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
                                 Equipment.class, list1));
+                    } // End of if for expected property start element
+
+                    else {
+                    }
+
+                    while (!reader.isStartElement() && !reader.isEndElement())
+                        reader.next();
+
+                    if (reader.isStartElement()) {
+                        // 2 - A start element we are not expecting indicates a trailing invalid property
+                        throw new org.apache.axis2.databinding.ADBException(
+                            "Unexpected subelement " + reader.getName());
+                    }
+                } catch (javax.xml.stream.XMLStreamException e) {
+                    throw new java.lang.Exception(e);
+                }
+
+                return object;
+            }
+        } //end of factory class
+    }
+
+    public static class AddEquipmentResponse implements org.apache.axis2.databinding.ADBBean {
+        public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://ws.apache.org/axis2",
+                "addEquipmentResponse", "ns2");
+
+        /**
+         * field for _return
+         */
+        protected java.lang.String local_return;
+
+        /*  This tracker boolean wil be used to detect whether the user called the set method
+         *   for this attribute. It will be used to determine whether to include this field
+         *   in the serialized XML
+         */
+        protected boolean local_returnTracker = false;
+
+        public boolean is_returnSpecified() {
+            return local_returnTracker;
+        }
+
+        /**
+         * Auto generated getter method
+         * @return java.lang.String
+         */
+        public java.lang.String get_return() {
+            return local_return;
+        }
+
+        /**
+         * Auto generated setter method
+         * @param param _return
+         */
+        public void set_return(java.lang.String param) {
+            local_returnTracker = true;
+
+            this.local_return = param;
+        }
+
+        /**
+         *
+         * @param parentQName
+         * @param factory
+         * @return org.apache.axiom.om.OMElement
+         */
+        public org.apache.axiom.om.OMElement getOMElement(
+            final javax.xml.namespace.QName parentQName,
+            final org.apache.axiom.om.OMFactory factory)
+            throws org.apache.axis2.databinding.ADBException {
+            return factory.createOMElement(new org.apache.axis2.databinding.ADBDataSource(
+                    this, MY_QNAME));
+        }
+
+        public void serialize(final javax.xml.namespace.QName parentQName,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException,
+                org.apache.axis2.databinding.ADBException {
+            serialize(parentQName, xmlWriter, false);
+        }
+
+        public void serialize(final javax.xml.namespace.QName parentQName,
+            javax.xml.stream.XMLStreamWriter xmlWriter, boolean serializeType)
+            throws javax.xml.stream.XMLStreamException,
+                org.apache.axis2.databinding.ADBException {
+            java.lang.String prefix = null;
+            java.lang.String namespace = null;
+
+            prefix = parentQName.getPrefix();
+            namespace = parentQName.getNamespaceURI();
+            writeStartElement(prefix, namespace, parentQName.getLocalPart(),
+                xmlWriter);
+
+            if (serializeType) {
+                java.lang.String namespacePrefix = registerPrefix(xmlWriter,
+                        "http://ws.apache.org/axis2");
+
+                if ((namespacePrefix != null) &&
+                        (namespacePrefix.trim().length() > 0)) {
+                    writeAttribute("xsi",
+                        "http://www.w3.org/2001/XMLSchema-instance", "type",
+                        namespacePrefix + ":addEquipmentResponse", xmlWriter);
+                } else {
+                    writeAttribute("xsi",
+                        "http://www.w3.org/2001/XMLSchema-instance", "type",
+                        "addEquipmentResponse", xmlWriter);
+                }
+            }
+
+            if (local_returnTracker) {
+                namespace = "http://ws.apache.org/axis2";
+                writeStartElement(null, namespace, "return", xmlWriter);
+
+                if (local_return == null) {
+                    // write the nil attribute
+                    writeAttribute("xsi",
+                        "http://www.w3.org/2001/XMLSchema-instance", "nil",
+                        "1", xmlWriter);
+                } else {
+                    xmlWriter.writeCharacters(local_return);
+                }
+
+                xmlWriter.writeEndElement();
+            }
+
+            xmlWriter.writeEndElement();
+        }
+
+        private static java.lang.String generatePrefix(
+            java.lang.String namespace) {
+            if (namespace.equals("http://ws.apache.org/axis2")) {
+                return "ns2";
+            }
+
+            return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+        }
+
+        /**
+         * Utility method to write an element start tag.
+         */
+        private void writeStartElement(java.lang.String prefix,
+            java.lang.String namespace, java.lang.String localPart,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String writerPrefix = xmlWriter.getPrefix(namespace);
+
+            if (writerPrefix != null) {
+                xmlWriter.writeStartElement(writerPrefix, localPart, namespace);
+            } else {
+                if (namespace.length() == 0) {
+                    prefix = "";
+                } else if (prefix == null) {
+                    prefix = generatePrefix(namespace);
+                }
+
+                xmlWriter.writeStartElement(prefix, localPart, namespace);
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+        }
+
+        /**
+         * Util method to write an attribute with the ns prefix
+         */
+        private void writeAttribute(java.lang.String prefix,
+            java.lang.String namespace, java.lang.String attName,
+            java.lang.String attValue,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String writerPrefix = xmlWriter.getPrefix(namespace);
+
+            if (writerPrefix != null) {
+                xmlWriter.writeAttribute(writerPrefix, namespace, attName,
+                    attValue);
+            } else {
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+                xmlWriter.writeAttribute(prefix, namespace, attName, attValue);
+            }
+        }
+
+        /**
+         * Util method to write an attribute without the ns prefix
+         */
+        private void writeAttribute(java.lang.String namespace,
+            java.lang.String attName, java.lang.String attValue,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            if (namespace.equals("")) {
+                xmlWriter.writeAttribute(attName, attValue);
+            } else {
+                xmlWriter.writeAttribute(registerPrefix(xmlWriter, namespace),
+                    namespace, attName, attValue);
+            }
+        }
+
+        /**
+         * Util method to write an attribute without the ns prefix
+         */
+        private void writeQNameAttribute(java.lang.String namespace,
+            java.lang.String attName, javax.xml.namespace.QName qname,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String attributeNamespace = qname.getNamespaceURI();
+            java.lang.String attributePrefix = xmlWriter.getPrefix(attributeNamespace);
+
+            if (attributePrefix == null) {
+                attributePrefix = registerPrefix(xmlWriter, attributeNamespace);
+            }
+
+            java.lang.String attributeValue;
+
+            if (attributePrefix.trim().length() > 0) {
+                attributeValue = attributePrefix + ":" + qname.getLocalPart();
+            } else {
+                attributeValue = qname.getLocalPart();
+            }
+
+            if (namespace.equals("")) {
+                xmlWriter.writeAttribute(attName, attributeValue);
+            } else {
+                registerPrefix(xmlWriter, namespace);
+                xmlWriter.writeAttribute(attributePrefix, namespace, attName,
+                    attributeValue);
+            }
+        }
+
+        /**
+         *  method to handle Qnames
+         */
+        private void writeQName(javax.xml.namespace.QName qname,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String namespaceURI = qname.getNamespaceURI();
+
+            if (namespaceURI != null) {
+                java.lang.String prefix = xmlWriter.getPrefix(namespaceURI);
+
+                if (prefix == null) {
+                    prefix = generatePrefix(namespaceURI);
+                    xmlWriter.writeNamespace(prefix, namespaceURI);
+                    xmlWriter.setPrefix(prefix, namespaceURI);
+                }
+
+                if (prefix.trim().length() > 0) {
+                    xmlWriter.writeCharacters(prefix + ":" +
+                        org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                            qname));
+                } else {
+                    // i.e this is the default namespace
+                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                            qname));
+                }
+            } else {
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                        qname));
+            }
+        }
+
+        private void writeQNames(javax.xml.namespace.QName[] qnames,
+            javax.xml.stream.XMLStreamWriter xmlWriter)
+            throws javax.xml.stream.XMLStreamException {
+            if (qnames != null) {
+                // we have to store this data until last moment since it is not possible to write any
+                // namespace data after writing the charactor data
+                java.lang.StringBuffer stringToWrite = new java.lang.StringBuffer();
+                java.lang.String namespaceURI = null;
+                java.lang.String prefix = null;
+
+                for (int i = 0; i < qnames.length; i++) {
+                    if (i > 0) {
+                        stringToWrite.append(" ");
+                    }
+
+                    namespaceURI = qnames[i].getNamespaceURI();
+
+                    if (namespaceURI != null) {
+                        prefix = xmlWriter.getPrefix(namespaceURI);
+
+                        if ((prefix == null) || (prefix.length() == 0)) {
+                            prefix = generatePrefix(namespaceURI);
+                            xmlWriter.writeNamespace(prefix, namespaceURI);
+                            xmlWriter.setPrefix(prefix, namespaceURI);
+                        }
+
+                        if (prefix.trim().length() > 0) {
+                            stringToWrite.append(prefix).append(":")
+                                         .append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                    qnames[i]));
+                        } else {
+                            stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                    qnames[i]));
+                        }
+                    } else {
+                        stringToWrite.append(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                qnames[i]));
+                    }
+                }
+
+                xmlWriter.writeCharacters(stringToWrite.toString());
+            }
+        }
+
+        /**
+         * Register a namespace prefix
+         */
+        private java.lang.String registerPrefix(
+            javax.xml.stream.XMLStreamWriter xmlWriter,
+            java.lang.String namespace)
+            throws javax.xml.stream.XMLStreamException {
+            java.lang.String prefix = xmlWriter.getPrefix(namespace);
+
+            if (prefix == null) {
+                prefix = generatePrefix(namespace);
+
+                javax.xml.namespace.NamespaceContext nsContext = xmlWriter.getNamespaceContext();
+
+                while (true) {
+                    java.lang.String uri = nsContext.getNamespaceURI(prefix);
+
+                    if ((uri == null) || (uri.length() == 0)) {
+                        break;
+                    }
+
+                    prefix = org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
+                }
+
+                xmlWriter.writeNamespace(prefix, namespace);
+                xmlWriter.setPrefix(prefix, namespace);
+            }
+
+            return prefix;
+        }
+
+        /**
+         *  Factory class that keeps the parse method
+         */
+        public static class Factory {
+            private static org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(Factory.class);
+
+            /**
+             * static method to create the object
+             * Precondition:  If this object is an element, the current or next start element starts this object and any intervening reader events are ignorable
+             *                If this object is not an element, it is a complex type and the reader is at the event just after the outer start element
+             * Postcondition: If this object is an element, the reader is positioned at its end element
+             *                If this object is a complex type, the reader is positioned at the end element of its outer element
+             */
+            public static AddEquipmentResponse parse(
+                javax.xml.stream.XMLStreamReader reader)
+                throws java.lang.Exception {
+                AddEquipmentResponse object = new AddEquipmentResponse();
+
+                int event;
+                javax.xml.namespace.QName currentQName = null;
+                java.lang.String nillableValue = null;
+                java.lang.String prefix = "";
+                java.lang.String namespaceuri = "";
+
+                try {
+                    while (!reader.isStartElement() && !reader.isEndElement())
+                        reader.next();
+
+                    currentQName = reader.getName();
+
+                    if (reader.getAttributeValue(
+                                "http://www.w3.org/2001/XMLSchema-instance",
+                                "type") != null) {
+                        java.lang.String fullTypeName = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                                "type");
+
+                        if (fullTypeName != null) {
+                            java.lang.String nsPrefix = null;
+
+                            if (fullTypeName.indexOf(":") > -1) {
+                                nsPrefix = fullTypeName.substring(0,
+                                        fullTypeName.indexOf(":"));
+                            }
+
+                            nsPrefix = (nsPrefix == null) ? "" : nsPrefix;
+
+                            java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(
+                                        ":") + 1);
+
+                            if (!"addEquipmentResponse".equals(type)) {
+                                //find namespace for the prefix
+                                java.lang.String nsUri = reader.getNamespaceContext()
+                                                               .getNamespaceURI(nsPrefix);
+
+                                return (AddEquipmentResponse) ExtensionMapper.getTypeObject(nsUri,
+                                    type, reader);
+                            }
+                        }
+                    }
+
+                    // Note all attributes that were handled. Used to differ normal attributes
+                    // from anyAttributes.
+                    java.util.Vector handledAttributes = new java.util.Vector();
+
+                    reader.next();
+
+                    while (!reader.isStartElement() && !reader.isEndElement())
+                        reader.next();
+
+                    if (reader.isStartElement() &&
+                            new javax.xml.namespace.QName(
+                                "http://ws.apache.org/axis2", "return").equals(
+                                reader.getName())) {
+                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                                "nil");
+
+                        if (!"true".equals(nillableValue) &&
+                                !"1".equals(nillableValue)) {
+                            java.lang.String content = reader.getElementText();
+
+                            object.set_return(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                    content));
+                        } else {
+                            reader.getElementText(); // throw away text nodes if any.
+                        }
+
+                        reader.next();
                     } // End of if for expected property start element
 
                     else {
