@@ -194,7 +194,10 @@ public class Client {
     public void delEquipment(int code)
     {
         try{
-//            client.delEquipment(code);
+            MySQLServiceEquipmentStub.DelEquipment equipmentOperation = new MySQLServiceEquipmentStub.DelEquipment();
+            equipmentOperation.setCode(code);
+            MySQLServiceEquipmentStub.DelEquipmentResponse response = stub.delEquipment(equipmentOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -203,7 +206,10 @@ public class Client {
     public void delCabinet(int code)
     {
         try{
-//            client.delCabinet(code);
+            MySQLServiceEquipmentStub.DelCabinet cabinetOperation = new MySQLServiceEquipmentStub.DelCabinet();
+            cabinetOperation.setCode(code);
+            MySQLServiceEquipmentStub.DelCabinetResponse response = stub.delCabinet(cabinetOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -212,7 +218,10 @@ public class Client {
     public void delResponsible(int code)
     {
         try{
-//            client.delResponsible(code);
+            MySQLServiceEquipmentStub.DelResponsible responsibleOperation = new MySQLServiceEquipmentStub.DelResponsible();
+            responsibleOperation.setCode(code);
+            MySQLServiceEquipmentStub.DelResponsibleResponse response = stub.delResponsible(responsibleOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -221,7 +230,10 @@ public class Client {
     public void delDistribution(int code)
     {
         try{
-//            client.delDistribution(code);
+            MySQLServiceEquipmentStub.DelDistribution distributionOperation = new MySQLServiceEquipmentStub.DelDistribution();
+            distributionOperation.setCode(code);
+            MySQLServiceEquipmentStub.DelDistributionResponse response = stub.delDistribution(distributionOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -230,7 +242,10 @@ public class Client {
     public void delWriteoff(int code)
     {
         try{
-//            client.delWriteoff(code);
+            MySQLServiceEquipmentStub.DelWriteoff writeoffOperation = new MySQLServiceEquipmentStub.DelWriteoff();
+            writeoffOperation.setCode(code);
+            MySQLServiceEquipmentStub.DelWriteoffResponse response = stub.delWriteoff(writeoffOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -239,7 +254,10 @@ public class Client {
     public void editEquipment(Equipment eq)
     {
         try{
-//            client.editEquipment(eq);
+            MySQLServiceEquipmentStub.EditEquipment equipmentOperation = new MySQLServiceEquipmentStub.EditEquipment();
+            equipmentOperation.setEquipment(eq);
+            MySQLServiceEquipmentStub.EditEquipmentResponse response = stub.editEquipment(equipmentOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -248,7 +266,10 @@ public class Client {
     public void editCabinet(Cabinet cab)
     {
         try{
-//            client.editCabinet(cab);
+            MySQLServiceEquipmentStub.EditCabinet cabinetOperation = new MySQLServiceEquipmentStub.EditCabinet();
+            cabinetOperation.setCabinet(cab);
+            MySQLServiceEquipmentStub.EditCabinetResponse response = stub.editCabinet(cabinetOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -257,7 +278,10 @@ public class Client {
     public void editResponsible(Responsible resp)
     {
         try{
-//            client.editResponsible(resp);
+            MySQLServiceEquipmentStub.EditResponsible responsibleOperation = new MySQLServiceEquipmentStub.EditResponsible();
+            responsibleOperation.setResponsible(resp);
+            MySQLServiceEquipmentStub.EditResponsibleResponse response = stub.editResponsible(responsibleOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -266,7 +290,10 @@ public class Client {
     public void editDistribution(Distribution dist)
     {
         try{
-//            client.editDistribution(dist);
+            MySQLServiceEquipmentStub.EditDistribution distributionOperation = new MySQLServiceEquipmentStub.EditDistribution();
+            distributionOperation.setDistribution(dist);
+            MySQLServiceEquipmentStub.EditDistributionResponse response = stub.editDistribution(distributionOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -275,7 +302,10 @@ public class Client {
     public void editWriteoff(Writeoff wr)
     {
         try{
-//            client.editWriteoff(wr);
+            MySQLServiceEquipmentStub.EditWriteoff writeoffOperation = new MySQLServiceEquipmentStub.EditWriteoff();
+            writeoffOperation.setWriteoff(wr);
+            MySQLServiceEquipmentStub.EditWriteoffResponse response = stub.editWriteoff(writeoffOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
