@@ -1,7 +1,8 @@
 package client;
 
+import java.util.Arrays;
 import org.apache.ws.axis2.MySQLServiceEquipmentStub;
-
+import org.apache.ws.axis2.MySQLServiceEquipmentStub.*;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class Client {
 
     private final static String END_POINT = "http://localhost:1997/axis2/services/MySQLServiceEquipment?wsdl";
+    private MySQLServiceEquipmentStub stub;
 
     public static void main(String[] args) throws RemoteException {
 //get my spechial code is working
@@ -50,10 +52,12 @@ public class Client {
 
     }
 
-   /*private MySQLServiceEquipment client;
-
     public void connect(){
-        client = new MySQLServiceEquipment();
+        try {
+            stub = new MySQLServiceEquipmentStub(END_POINT);
+        } catch (Exception x) {
+            x.printStackTrace();
+        }
         System.out.println("Connection open");
     }
 
@@ -61,7 +65,10 @@ public class Client {
     {
         List<Equipment> list = new ArrayList<Equipment>();
         try{
-            list = client.getEquipment();
+            MySQLServiceEquipmentStub.GetEquipment equipmentOperation = new MySQLServiceEquipmentStub.GetEquipment();
+            MySQLServiceEquipmentStub.GetEquipmentResponse response = stub.getEquipment(equipmentOperation);
+            MySQLServiceEquipmentStub.Equipment[] returnedEquipment = response.get_return();
+            list = Arrays.asList(returnedEquipment);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -72,7 +79,10 @@ public class Client {
     {
         List<Cabinet> list = new ArrayList<Cabinet>();
         try{
-            list = client.getCabinet();
+            MySQLServiceEquipmentStub.GetCabinet cabinetOperation = new MySQLServiceEquipmentStub.GetCabinet();
+            MySQLServiceEquipmentStub.GetCabinetResponse response1 = stub.getCabinet(cabinetOperation);
+            MySQLServiceEquipmentStub.Cabinet[] returnedCabinet = response1.get_return();
+            list = Arrays.asList(returnedCabinet);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -83,7 +93,10 @@ public class Client {
     {
         List<Responsible> list = new ArrayList<Responsible>();
         try{
-            list = client.getResponsible();
+            MySQLServiceEquipmentStub.GetResponsible responsibleOperation = new MySQLServiceEquipmentStub.GetResponsible();
+            MySQLServiceEquipmentStub.GetResponsibleResponse response2 = stub.getResponsible(responsibleOperation);
+            MySQLServiceEquipmentStub.Responsible[] returnedResponsible = response2.get_return();
+            list = Arrays.asList(returnedResponsible);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -94,7 +107,10 @@ public class Client {
     {
         List<Distribution> list = new ArrayList<Distribution>();
         try{
-            list = client.getDistribution();
+            MySQLServiceEquipmentStub.GetDistribution distributionOperation = new MySQLServiceEquipmentStub.GetDistribution();
+            MySQLServiceEquipmentStub.GetDistributionResponse response3 = stub.getDistribution(distributionOperation);
+            MySQLServiceEquipmentStub.Distribution[] returnedDistribution = response3.get_return();
+            list = Arrays.asList(returnedDistribution);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -105,7 +121,10 @@ public class Client {
     {
         List<Writeoff> list = new ArrayList<Writeoff>();
         try{
-            list = client.getWriteoff();
+            MySQLServiceEquipmentStub.GetWriteoff writeoffOperation = new MySQLServiceEquipmentStub.GetWriteoff();
+            MySQLServiceEquipmentStub.GetWriteoffResponse response4 = stub.getWriteoff(writeoffOperation);
+            MySQLServiceEquipmentStub.Writeoff[] returnedWriteoff = response4.get_return();
+            list = Arrays.asList(returnedWriteoff);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -115,7 +134,7 @@ public class Client {
     public void addEquipment(Equipment eq)
     {
         try{
-            client.addEquipment(eq);
+//            client.addEquipment(eq);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -124,7 +143,7 @@ public class Client {
     public void addCabinet(Cabinet cab)
     {
         try{
-            client.addCabinet(cab);
+//            client.addCabinet(cab);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -133,7 +152,7 @@ public class Client {
     public void addResponsible(Responsible resp)
     {
         try{
-            client.addResponsible(resp);
+//            client.addResponsible(resp);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -142,7 +161,7 @@ public class Client {
     public void addDistribution(Distribution dist)
     {
         try{
-            client.addDistribution(dist);
+//            client.addDistribution(dist);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -151,7 +170,7 @@ public class Client {
     public void addWriteoff(Writeoff wr)
     {
         try{
-            client.addWriteoff(wr);
+//            client.addWriteoff(wr);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -160,7 +179,7 @@ public class Client {
     public void delEquipment(int code)
     {
         try{
-            client.delEquipment(code);
+//            client.delEquipment(code);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -169,7 +188,7 @@ public class Client {
     public void delCabinet(int code)
     {
         try{
-            client.delCabinet(code);
+//            client.delCabinet(code);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -178,7 +197,7 @@ public class Client {
     public void delResponsible(int code)
     {
         try{
-            client.delResponsible(code);
+//            client.delResponsible(code);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -187,7 +206,7 @@ public class Client {
     public void delDistribution(int code)
     {
         try{
-            client.delDistribution(code);
+//            client.delDistribution(code);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -196,7 +215,7 @@ public class Client {
     public void delWriteoff(int code)
     {
         try{
-            client.delWriteoff(code);
+//            client.delWriteoff(code);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -205,7 +224,7 @@ public class Client {
     public void editEquipment(Equipment eq)
     {
         try{
-            client.editEquipment(eq);
+//            client.editEquipment(eq);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -214,7 +233,7 @@ public class Client {
     public void editCabinet(Cabinet cab)
     {
         try{
-            client.editCabinet(cab);
+//            client.editCabinet(cab);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -223,7 +242,7 @@ public class Client {
     public void editResponsible(Responsible resp)
     {
         try{
-            client.editResponsible(resp);
+//            client.editResponsible(resp);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -232,7 +251,7 @@ public class Client {
     public void editDistribution(Distribution dist)
     {
         try{
-            client.editDistribution(dist);
+//            client.editDistribution(dist);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -241,7 +260,7 @@ public class Client {
     public void editWriteoff(Writeoff wr)
     {
         try{
-            client.editWriteoff(wr);
+//            client.editWriteoff(wr);
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -249,7 +268,7 @@ public class Client {
 
     public void close(){
         System.out.println("Connection closed");
-    }*/
+    }
 }
 
 
