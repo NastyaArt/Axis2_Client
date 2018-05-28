@@ -39,33 +39,18 @@ public abstract class MySQLServiceEquipmentCallbackHandler {
     }
 
     /**
-     * auto generated Axis2 call back method for addEquipment method
-     * override this method for handling normal response from addEquipment operation
+     * auto generated Axis2 call back method for addResponsible method
+     * override this method for handling normal response from addResponsible operation
      */
-    public void receiveResultaddEquipment(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse result) {
+    public void receiveResultaddResponsible(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddResponsibleResponse result) {
     }
 
     /**
      * auto generated Axis2 Error handler
-     * override this method for handling error response from addEquipment operation
+     * override this method for handling error response from addResponsible operation
      */
-    public void receiveErroraddEquipment(java.lang.Exception e) {
-    }
-
-    /**
-     * auto generated Axis2 call back method for getDistribution method
-     * override this method for handling normal response from getDistribution operation
-     */
-    public void receiveResultgetDistribution(
-        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistributionResponse result) {
-    }
-
-    /**
-     * auto generated Axis2 Error handler
-     * override this method for handling error response from getDistribution operation
-     */
-    public void receiveErrorgetDistribution(java.lang.Exception e) {
+    public void receiveErroraddResponsible(java.lang.Exception e) {
     }
 
     /**
@@ -99,6 +84,51 @@ public abstract class MySQLServiceEquipmentCallbackHandler {
     }
 
     /**
+     * auto generated Axis2 call back method for editResponsible method
+     * override this method for handling normal response from editResponsible operation
+     */
+    public void receiveResulteditResponsible(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.EditResponsibleResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from editResponsible operation
+     */
+    public void receiveErroreditResponsible(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for delEquipment method
+     * override this method for handling normal response from delEquipment operation
+     */
+    public void receiveResultdelEquipment(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.DelEquipmentResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from delEquipment operation
+     */
+    public void receiveErrordelEquipment(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for addCabinet method
+     * override this method for handling normal response from addCabinet operation
+     */
+    public void receiveResultaddCabinet(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddCabinetResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from addCabinet operation
+     */
+    public void receiveErroraddCabinet(java.lang.Exception e) {
+    }
+
+    /**
      * auto generated Axis2 call back method for getMySpechialCode method
      * override this method for handling normal response from getMySpechialCode operation
      */
@@ -111,6 +141,156 @@ public abstract class MySQLServiceEquipmentCallbackHandler {
      * override this method for handling error response from getMySpechialCode operation
      */
     public void receiveErrorgetMySpechialCode(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for delResponsible method
+     * override this method for handling normal response from delResponsible operation
+     */
+    public void receiveResultdelResponsible(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.DelResponsibleResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from delResponsible operation
+     */
+    public void receiveErrordelResponsible(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for delDistribution method
+     * override this method for handling normal response from delDistribution operation
+     */
+    public void receiveResultdelDistribution(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.DelDistributionResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from delDistribution operation
+     */
+    public void receiveErrordelDistribution(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for editWriteoff method
+     * override this method for handling normal response from editWriteoff operation
+     */
+    public void receiveResulteditWriteoff(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.EditWriteoffResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from editWriteoff operation
+     */
+    public void receiveErroreditWriteoff(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for editDistribution method
+     * override this method for handling normal response from editDistribution operation
+     */
+    public void receiveResulteditDistribution(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.EditDistributionResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from editDistribution operation
+     */
+    public void receiveErroreditDistribution(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for addEquipment method
+     * override this method for handling normal response from addEquipment operation
+     */
+    public void receiveResultaddEquipment(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddEquipmentResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from addEquipment operation
+     */
+    public void receiveErroraddEquipment(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for delWriteoff method
+     * override this method for handling normal response from delWriteoff operation
+     */
+    public void receiveResultdelWriteoff(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.DelWriteoffResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from delWriteoff operation
+     */
+    public void receiveErrordelWriteoff(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for delCabinet method
+     * override this method for handling normal response from delCabinet operation
+     */
+    public void receiveResultdelCabinet(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.DelCabinetResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from delCabinet operation
+     */
+    public void receiveErrordelCabinet(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for getDistribution method
+     * override this method for handling normal response from getDistribution operation
+     */
+    public void receiveResultgetDistribution(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.GetDistributionResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from getDistribution operation
+     */
+    public void receiveErrorgetDistribution(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for editEquipment method
+     * override this method for handling normal response from editEquipment operation
+     */
+    public void receiveResulteditEquipment(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.EditEquipmentResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from editEquipment operation
+     */
+    public void receiveErroreditEquipment(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for addWriteoff method
+     * override this method for handling normal response from addWriteoff operation
+     */
+    public void receiveResultaddWriteoff(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddWriteoffResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from addWriteoff operation
+     */
+    public void receiveErroraddWriteoff(java.lang.Exception e) {
     }
 
     /**
@@ -141,5 +321,35 @@ public abstract class MySQLServiceEquipmentCallbackHandler {
      * override this method for handling error response from getEquipment operation
      */
     public void receiveErrorgetEquipment(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for addDistribution method
+     * override this method for handling normal response from addDistribution operation
+     */
+    public void receiveResultaddDistribution(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.AddDistributionResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from addDistribution operation
+     */
+    public void receiveErroraddDistribution(java.lang.Exception e) {
+    }
+
+    /**
+     * auto generated Axis2 call back method for editCabinet method
+     * override this method for handling normal response from editCabinet operation
+     */
+    public void receiveResulteditCabinet(
+        org.apache.ws.axis2.MySQLServiceEquipmentStub.EditCabinetResponse result) {
+    }
+
+    /**
+     * auto generated Axis2 Error handler
+     * override this method for handling error response from editCabinet operation
+     */
+    public void receiveErroreditCabinet(java.lang.Exception e) {
     }
 }

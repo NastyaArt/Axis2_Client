@@ -136,9 +136,6 @@ public class Client {
         try{
             MySQLServiceEquipmentStub.AddEquipment equipmentOperation = new MySQLServiceEquipmentStub.AddEquipment();
             equipmentOperation.setEquipment(eq);
-
-
-            // send object and receive response
             MySQLServiceEquipmentStub.AddEquipmentResponse response = stub.addEquipment(equipmentOperation);
             String result = response.get_return();
         } catch (Exception x) {
@@ -149,7 +146,10 @@ public class Client {
     public void addCabinet(Cabinet cab)
     {
         try{
-//            client.addCabinet(cab);
+            MySQLServiceEquipmentStub.AddCabinet cabinetOperation = new MySQLServiceEquipmentStub.AddCabinet();
+            cabinetOperation.setCabinet(cab);
+            MySQLServiceEquipmentStub.AddCabinetResponse response = stub.addCabinet(cabinetOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -158,7 +158,10 @@ public class Client {
     public void addResponsible(Responsible resp)
     {
         try{
-//            client.addResponsible(resp);
+            MySQLServiceEquipmentStub.AddResponsible responsibleOperation = new MySQLServiceEquipmentStub.AddResponsible();
+            responsibleOperation.setResponsible(resp);
+            MySQLServiceEquipmentStub.AddResponsibleResponse response = stub.addResponsible(responsibleOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -167,7 +170,10 @@ public class Client {
     public void addDistribution(Distribution dist)
     {
         try{
-//            client.addDistribution(dist);
+            MySQLServiceEquipmentStub.AddDistribution distributionOperation = new MySQLServiceEquipmentStub.AddDistribution();
+            distributionOperation.setDistribution(dist);
+            MySQLServiceEquipmentStub.AddDistributionResponse response = stub.addDistribution(distributionOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -176,7 +182,10 @@ public class Client {
     public void addWriteoff(Writeoff wr)
     {
         try{
-//            client.addWriteoff(wr);
+            MySQLServiceEquipmentStub.AddWriteoff writeoffOperation = new MySQLServiceEquipmentStub.AddWriteoff();
+            writeoffOperation.setWriteoff(wr);
+            MySQLServiceEquipmentStub.AddWriteoffResponse response = stub.addWriteoff(writeoffOperation);
+            String result = response.get_return();
         } catch (Exception x) {
             x.printStackTrace();
         }
